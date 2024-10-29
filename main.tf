@@ -5,4 +5,3 @@
 # - outputs.tf: Output values
 # - policies.tf: IAM policies
 # - roles.tf: IAM roles
-# - users.tf: IAM users

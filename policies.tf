@@ -21,25 +21,6 @@ resource "aws_iam_policy" "ip_restricted" {
   })
 }
 
-# Assume Role Policy
-resource "aws_iam_policy" "assume_role" {
-  name        = "assume-role-policy"
-  description = "Policy allowing users to assume roles"
-
-  policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Effect = "Allow"
-        Action = "sts:AssumeRole"
-        Resource = [
-          aws_iam_role.unrestricted_role.arn
-        ]
-      }
-    ]
-  })
-}
-
 # Assume Restricted Role Policy
 resource "aws_iam_policy" "assume_restricted_role" {
   name        = "assume-restricted-role-policy"
