@@ -38,4 +38,23 @@ resource "aws_iam_policy" "assume_restricted_role" {
       }
     ]
   })
+}
+
+# Assume Unrestricted Role Policy
+resource "aws_iam_policy" "assume_unrestricted_role" {
+  name        = "assume-unrestricted-role-policy"
+  description = "Policy allowing user to assume unrestricted role"
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect = "Allow"
+        Action = "sts:AssumeRole"
+        Resource = [
+          aws_iam_role.unrestricted_role.arn
+        ]
+      }
+    ]
+  })
 } 
