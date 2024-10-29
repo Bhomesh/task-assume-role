@@ -44,4 +44,10 @@ resource "aws_iam_role_policy_attachment" "restricted_role_ip" {
 resource "aws_iam_role_policy_attachment" "unrestricted_role_assume" {
   role       = aws_iam_role.unrestricted_role.name
   policy_arn = aws_iam_policy.assume_restricted_role.arn
+}
+
+# Attach S3 full access policy to restricted role
+resource "aws_iam_role_policy_attachment" "restricted_role_s3" {
+  role       = aws_iam_role.restricted_role.name
+  policy_arn = aws_iam_policy.s3_full_access.arn
 } 

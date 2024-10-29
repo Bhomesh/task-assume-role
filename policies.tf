@@ -57,4 +57,21 @@ resource "aws_iam_policy" "assume_unrestricted_role" {
       }
     ]
   })
+}
+
+# S3 Full Access Policy
+resource "aws_iam_policy" "s3_full_access" {
+  name        = "s3-full-access-policy"
+  description = "Policy providing full access to S3"
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect = "Allow"
+        Action = "s3:*"
+        Resource = "*"
+      }
+    ]
+  })
 } 
