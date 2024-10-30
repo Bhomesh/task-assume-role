@@ -1,7 +1,7 @@
 variable "allowed_ip" {
   description = "IP address allowed to access the restricted role"
   type        = string
-  default     = "13.233.154.138"
+  default     = "15.207.116.54"
 }
 
 variable "aws_region" {
