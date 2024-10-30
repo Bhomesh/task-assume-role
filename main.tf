@@ -15,6 +15,5 @@ resource "aws_iam_user_policy_attachment" "user_assume_unrestricted" {
 
 resource "aws_s3_bucket" "example_bucket" {
   bucket = "your-unique-bucket-name"  # Replace with a unique bucket name
-
 }
 
