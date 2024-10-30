@@ -5,27 +5,27 @@ provider "aws" {
 data "aws_caller_identity" "current" {}
 
 
-resource "aws_iam_policy" "ip_restricted" {
-  name        = "ip-restricted-policy"
-  description = "Policy that restricts access to specific IP"
+# resource "aws_iam_policy" "ip_restricted" {
+#   name        = "ip-restricted-policy"
+#   description = "Policy that restricts access to specific IP"
 
-  policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Sid      = "IPRestriction"
-        Effect   = "Deny"
-        Action   = "*"
-        Resource = "*"
-        Condition = {
-          NotIpAddress = {
-            "aws:SourceIp" = ["${var.allowed_ip}/32"]
-          }
-        }
-      }
-    ]
-  })
-}
+#   policy = jsonencode({
+#     Version = "2012-10-17"
+#     Statement = [
+#       {
+#         Sid      = "IPRestriction"
+#         Effect   = "Deny"
+#         Action   = "*"
+#         Resource = "*"
+#         Condition = {
+#           NotIpAddress = {
+#             "aws:SourceIp" = ["${var.allowed_ip}/32"]
+#           }
+#         }
+#       }
+#     ]
+#   })
+# }
 
 resource "aws_iam_policy" "s3_full_access" {
   name        = "s3-full-access-policy"
