@@ -46,3 +46,8 @@ resource "aws_iam_role_policy_attachment" "unrestricted_role_assume" {
   role       = aws_iam_role.unrestricted_role.name
   policy_arn = aws_iam_policy.assume_restricted_role.arn
 } 
+
+resource "aws_iam_role_policy_attachment" "attach_s3_policy" {
+  role       = aws_iam_role.restricted_role.name
+  policy_arn = aws_iam_policy.s3_access.arn
+}

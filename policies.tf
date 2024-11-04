@@ -1,42 +1,27 @@
-resource "aws_iam_policy" "ip_restricted" {
-  name        = "ip-restricted-policy"
-  description = "Policy that restricts access to specific IP"
+# resource "aws_iam_policy" "ip_restricted" {
+#   name        = "ip-restricted-policy"
+#   description = "Policy that restricts access to specific IP"
 
-  policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Sid      = "IPRestriction"
-        Effect   = "Deny"
-        Action   = "*"
-        Resource = "*"
-        Condition = {
-          NotIpAddress = {
-            "aws:SourceIp" = ["${var.allowed_ip}/32"]
-          }
-        }
-      }
-    ]
-  })
-}
+#   policy = jsonencode({
+#     Version = "2012-10-17"
+#     Statement = [
+#       {
+#         Sid      = "IPRestriction"
+#         Effect   = "Deny"
+#         Action   = "*"
+#         Resource = "*"
+#         Condition = {
+#           NotIpAddress = {
+#             "aws:SourceIp" = ["${var.allowed_ip}/32"]
+#           }
+#         }
+#       }
+#     ]
+#   })
+# }
 
-resource "aws_iam_policy" "s3_full_access" {
-  name        = "s3-full-access-policy"
-  description = "Policy providing full access to S3, including listing all buckets"
-
-  policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Effect = "Allow"
-        Action = [
-          "s3:*",
-          "s3:ListAllMyBuckets"
-        ]
-        Resource = "*"
-      }
-    ]
-  })
+resource "aws_" "name" {
+  
 }
 
 resource "aws_iam_policy" "assume_restricted_role" {
@@ -74,3 +59,7 @@ resource "aws_iam_policy" "assume_unrestricted_role" {
     ]
   })
 } 
+resource "aws_iam_role_policy_attachment" "attach_s3_policy" {
+  role       = aws_iam_role.restricted_role.name
+  policy_arn = aws_iam_policy.s3_access.arn
+}
