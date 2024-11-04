@@ -13,7 +13,4 @@ resource "aws_iam_user_policy_attachment" "user_assume_unrestricted" {
   policy_arn = aws_iam_policy.assume_unrestricted_role.arn
 }
 
-# resource "aws_s3_bucket" "example_bucket" {
-#   bucket = "test-bucket"  # Replace with a unique bucket name
-# }
 
